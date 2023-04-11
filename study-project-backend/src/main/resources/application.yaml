@@ -4,3 +4,19 @@ spring:
     url: jdbc:mysql://192.168.1.88:3306/study?useUnicode=true&characterEncoding=utf-8
     username: test
     password: 123456
+  mail:
+    host: smtp.163.com
+    username: javastudy111@163.com
+    password: ADNMGCTHSQGDJLUE
+    port: 465
+    properties:
+      from: javastudy111@163.com
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+  data:
+    redis:
+      database: 0
+      host: localhost
+      port: 6379
