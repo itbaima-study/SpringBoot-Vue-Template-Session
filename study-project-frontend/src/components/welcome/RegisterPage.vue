@@ -147,7 +147,7 @@ const register = () => {
 }
 
 const validateEmail = () => {
-    post('/api/auth/valid-email', {
+    post('/api/auth/valid-register-email', {
         email: form.email
     }, (message) => {
         ElMessage.success(message)
