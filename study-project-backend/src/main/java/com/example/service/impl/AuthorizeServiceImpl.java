@@ -1,6 +1,6 @@
 package com.example.service.impl;
 
-import com.example.entity.Account;
+import com.example.entity.auth.Account;
 import com.example.mapper.UserMapper;
 import com.example.service.AuthorizeService;
 import jakarta.annotation.Resource;
