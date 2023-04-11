@@ -10,7 +10,9 @@
             <div style="margin-top: 5px">在这里你可以同性交友，因为都是男的，没有学Java的女生。</div>
         </div>
         <div style="width: 400px;background-color: white">
-            <router-view/>
+            <transition name="el-fade-in-linear">
+                <router-view/>
+            </transition>
         </div>
     </div>
 </template>
