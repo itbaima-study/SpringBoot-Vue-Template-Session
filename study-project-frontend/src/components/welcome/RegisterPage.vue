@@ -5,7 +5,7 @@
             <div style="font-size: 14px;color: grey">欢迎注册我们的学习平台，请在下方填写相关信息</div>
         </div>
         <div style="margin-top: 50px">
-            <el-form :model="form" :rules="rules" @validate="onValidate">
+            <el-form :model="form" :rules="rules" @validate="onValidate" ref="formRef">
                 <el-form-item prop="username">
                     <el-input v-model="form.username" type="text" placeholder="用户名">
                         <template #prefix>
@@ -34,7 +34,7 @@
                         </template>
                     </el-input>
                 </el-form-item>
-                <el-form-item>
+                <el-form-item prop="code">
                     <el-row :gutter="10" style="width: 100%">
                         <el-col :span="17">
                             <el-input v-model="form.code" type="text" placeholder="请输入验证码">
@@ -51,7 +51,7 @@
             </el-form>
         </div>
         <div style="margin-top: 80px">
-            <el-button style="width: 270px" type="warning" plain>立即注册</el-button>
+            <el-button style="width: 270px" type="warning" @click="register" plain>立即注册</el-button>
         </div>
         <div style="margin-top: 20px">
             <span style="font-size: 14px;line-height: 15px;color: grey">已有账号? </span>
@@ -64,6 +64,7 @@
 import {EditPen, Lock, Message, User} from "@element-plus/icons-vue";
 import router from "@/router";
 import {reactive, ref} from "vue";
+import {ElMessage} from "element-plus";
 
 const form = reactive({
     username: '',
@@ -108,14 +109,28 @@ const rules = {
     email: [
         { required: true, message: '请输入邮件地址', trigger: 'blur' },
         {type: 'email', message: '请输入合法的电子邮件地址', trigger: ['blur', 'change']}
+    ],
+    code: [
+        { required: true, message: '请输入获取的验证码', trigger: 'blur' },
     ]
 }
 
+const formRef = ref()
 const isEmailValid = ref(false)
 
 const onValidate = (prop, isValid) => {
     if(prop === 'email')
         isEmailValid.value = isValid
+}
+
+const register = () => {
+    formRef.value.validate((isValid) => {
+        if(isValid) {
+            
+        } else {
+            ElMessage.warning('请完整填写注册表单内容！')
+        }
+    })
 }
 </script>
 
